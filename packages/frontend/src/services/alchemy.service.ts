@@ -1,8 +1,9 @@
+import { alchemyApiKey } from '@/constants'
 import { Alchemy, AssetTransfersCategory, Network } from 'alchemy-sdk'
 import { Address } from 'viem'
 
 const config = {
-  apiKey: 'demo',
+  apiKey: alchemyApiKey,
   network: Network.ETH_MAINNET
 }
 
