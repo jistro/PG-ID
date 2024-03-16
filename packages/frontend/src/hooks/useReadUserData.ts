@@ -8,15 +8,21 @@ function useReadUserData (user: Address) {
     {
       address: registryAddress,
       abi: Registry,
-      functionName: 'usernameRegistry',
+      functionName: 'getUsername',
       args: [user ?? zeroAddress]
     } as const,
     {
       address: registryAddress,
       abi: Registry,
-      functionName: 'dataVerfificationUser',
+      functionName: 'getPointsOfUser',
       args: [user ?? zeroAddress]
-    } as const
+    } as const,
+    {
+        address: registryAddress,
+        abi: Registry,
+        functionName: 'getLevelOfUser',
+        args: [user ?? zeroAddress]
+      } as const
   ]
   const result = useReadContracts({
     //@ts-expect-error
