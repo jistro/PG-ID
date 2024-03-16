@@ -1,0 +1,1 @@
+export const counterAddress = '0xA9902B1913Fb2894ea03aF0140Dbfa7920F0B557'
