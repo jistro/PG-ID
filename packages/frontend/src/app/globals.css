@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Londrina+Solid:wght@100;300;400;900&family=Sixtyfour&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,6 +25,50 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.dynamic-shadow-dom {
+  --dynamic-font-family-primary: 'Londrina Solid', sans-serif;
+  --dynamic-font-family-numbers: 'Londrina Solid', sans-serif;
+  --dynamic-brand-primary-color: #94716b;
+  --dynamic-border-radius: 0px;
+  --dynamic-error-1: #ff4646;
+  --dynamic-loading-animation-gradient: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  --dynamic-overlay: #fc0000;
+  --dynamic-shadow-down-1: 0px 3px 0px #fff;
+  --dynamic-shadow-down-2: 0px 0px 0px #000000;
+  --dynamic-shadow-down-3: -15px 15px 0px #00000076;
+  --dynamic-shadow-up-1: 0px -8px 48px -8px rgba(109, 121, 165, 0.16);
+  --dynamic-text-link: #0047ff;
+  --dynamic-text-primary: #594440;
+  --dynamic-text-size-title: 18px;
+  --dynamic-badge-background: #765A56;
+  --dynamic-badge-color: #fff;
+  --dynamic-badge-dot-background: #fff;
+  --dynamic-badge-primary-background: #94716b;
+  --dynamic-badge-primary-color: #fff;
+  --dynamic-search-bar-border: 1px solid #BFAAA6;
+  --dynamic-search-bar-border-hover: 1px solid #BFAAA6;
+  --dynamic-search-bar-border-focus: 1px solid #94716B;
+  --dynamic-wallet-list-tile-border-hover: 2px solid #94716B;
+  --dynamic-wallet-list-tile-shadow-hover: 0px 3px 0px #94716B;
+  --dynamic-connect-button-background: #fff;
+  --dynamic-connect-button-color: #000;
+  --dynamic-connect-button-border: 2px solid #000;
+  --dynamic-connect-button-shadow: 0px 3px 0px #fff;
+  --dynamic-connect-button-background-hover: rgba(22, 37, 77, 0.03);
+  --dynamic-connect-button-color-hover: #000;
+  --dynamic-connect-button-border: 2px solid #94716B;
+  --dynamic-connect-button-border-hover: 2px solid #94716B;
+  --dynamic-connect-button-shadow-hover: 0px 3px 0px #94716B  ;
+  --dynamic-tooltip-color: #000;
+  --dynamic-tooltip-text-color: #fff;
 }
 
 @layer utilities {

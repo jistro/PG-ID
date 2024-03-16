@@ -3,8 +3,15 @@ import {
   DynamicConnectButton,
   useDynamicModals,
 } from '@dynamic-labs/sdk-react-core';
+import { useRouter } from 'next/navigation';
+import { useAccount } from 'wagmi';
 
 export default function Login() {
+  const { isConnected } = useAccount();
+  const { push } = useRouter();
+  if (isConnected) {
+    push('/dashboard');
+  }
   return (
     <main className='h-screen'>
       <div className='flex flex-col items-center  mx-auto rounded-lg h-full sm:px-16  bg-white'>
