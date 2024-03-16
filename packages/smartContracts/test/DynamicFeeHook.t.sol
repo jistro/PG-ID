@@ -82,11 +82,11 @@ contract DynamicFeeHookTest is Test, Deployers {
         registerSystem = new RegisterSystem(userAdmin);
 
         vm.startPrank(userA);
-        registerSystem.safeMint();
+        registerSystem.safeMint(userA, "userA");
         vm.stopPrank();
 
         vm.startBroadcast(userB);
-        registerSystem.safeMint();
+        registerSystem.safeMint(userB, "userB");
         vm.stopBroadcast();
 
         vm.startBroadcast(userAdmin);

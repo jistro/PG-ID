@@ -11,7 +11,7 @@ import {RegisterSystem} from "./RegisterSystem.sol";
 
 contract DinamicFeeByLevelHook is BaseHook {
 
-    address public registerUser = 0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758;
+    address public registerUser = 0x42748Ea007D03DCCaC380804db628B381D803a17;
     constructor(IPoolManager _poolManager) BaseHook(_poolManager) {}
 
     function getHookPermissions() public pure override returns (Hooks.Permissions memory ) {

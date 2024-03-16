@@ -41,19 +41,21 @@ contract RegisterSystem is ERC721, AccessControl {
     }
 
     function safeMint(
+        address to,
+        string memory _username
     ) public {
         uint256 tokenId = _nextTokenId++;
-        _safeMint(msg.sender, tokenId);
-        dataVerfificationUser[msg.sender] = verificationMetadata({
+        _safeMint(to, tokenId);
+        dataVerfificationUser[to] = verificationMetadata({
             timeStamp: block.timestamp,
             points: 0,
             level: 0
         });
-        
+        registerUsername(_username, to);
     }
 
-    function registerUsername(string memory _username) public {
-        usernameRegistry[msg.sender] = string.concat(_username, PGID);
+    function registerUsername(string memory _username, address account) internal {
+        usernameRegistry[account] = string.concat(_username, PGID);
     }
 
     function setPointsData(
