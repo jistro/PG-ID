@@ -14,7 +14,7 @@ export default function Login() {
   }
   return (
     <main className='h-screen'>
-      <div className='flex flex-col items-center  mx-auto rounded-lg h-full sm:px-16  bg-white'>
+      <div className='flex flex-col items-center  mx-auto rounded-lg h-full sm:px-16  bg-transparent'>
         <div className='w-1/2 gap-4 h-full relative  bg-nouns-pastel'>
           <div className='rounded-lg  flex flex-col gap-4 p-6 bg-nouns-pastel'>
             <h2 className='font-sans text-start w-full  pb-4 mb-4 text-4xl text-[#594440] border-4 border-transparent border-dashed font-bold  border-b-[#C0ABA7]'>
