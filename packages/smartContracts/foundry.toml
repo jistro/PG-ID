@@ -2,6 +2,10 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+ffi = true
+fs_permissions = [{ access = "read-write", path = ".forge-snapshots/"}]
+solc_version = "0.8.24"
+evm_version = "cancun"
 remappings = [
     "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts",
     "@uniswap/v4-core/=lib/v4-core/",
@@ -9,5 +13,6 @@ remappings = [
     "@ethereum-attestation-service/eas-contracts/contracts/=lib/eas-contracts/contracts/",
     "solmate/=lib/solmate/src/",
 ]
+
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

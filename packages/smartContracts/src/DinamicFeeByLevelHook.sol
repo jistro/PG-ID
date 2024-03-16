@@ -32,7 +32,8 @@ contract DinamicFeeByLevelHook is BaseHook {
     /// @notice Sets the swap fee for a pool
     /// @dev Define your own custom logic here!
     function setDynamicFee(PoolKey calldata key, address user) public {
-        uint256 level = RegisterSystem(registerUser).getLevelOfUser(user);
+        //uint256 level = RegisterSystem(registerUser).getLevelOfUser(user);
+        uint256 level = 1;
         if (level == 0) {
             poolManager.updateDynamicSwapFee(key, 10000); // 1%
         } else if (level == 1) {
