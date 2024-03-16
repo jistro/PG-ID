@@ -31,3 +31,24 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    grid-template-rows: 0.4fr 0.6fr;
+    grid-template-areas:
+      'user stats'
+      'actions actions'
+      'actions actions';
+  }
+  .user {
+    grid-area: user;
+  }
+  .stats {
+    grid-area: stats;
+  }
+  .actions {
+    grid-area: actions;
+  }
+}
