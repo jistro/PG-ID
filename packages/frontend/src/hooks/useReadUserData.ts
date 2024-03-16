@@ -1,22 +1,27 @@
 import { registryAddress } from '@/constants'
 import { useReadContracts } from 'wagmi'
+import Registry from '@/constants/Registry.abi.json'
+import { Address, zeroAddress } from 'viem'
 
-function useReadUserData () {
-  ;[
+function useReadUserData (user: Address) {
+  const queries = [
     {
       address: registryAddress,
-      abi: 'wagmigotchiABI',
-      functionName: 'getAlive',
-      args:[]
-    },
+      abi: Registry,
+      functionName: 'usernameRegistry',
+      args: [user ?? zeroAddress]
+    } as const,
     {
       address: registryAddress,
-      abi: '',
-      functionName: 'getAlive',
-      args:[]
-    }
+      abi: Registry,
+      functionName: 'dataVerfificationUser',
+      args: [user ?? zeroAddress]
+    } as const
   ]
-  const result = useReadContracts()
+  const result = useReadContracts({
+    //@ts-expect-error
+    contracts: queries
+  })
   return result
 }
 

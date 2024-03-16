@@ -1,8 +1,19 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nouns from '@/assets/images/Nouns.svg';
+import { useReadUserData } from '@/hooks/useReadUserData';
+import { useAccount } from 'wagmi';
+import { Address } from 'viem';
 
 function User() {
+  const { address } = useAccount();
+  const { data } = useReadUserData(
+    '0x1726cf86DA996BC4B2F393E713f6F8ef83f2e4f6'
+  );
+  useEffect(() => {
+    console.debug(data);
+  }, [data]);
 
   return (
     <div className='max-h-full overflow-hidden text-xl text-[#594440] user flex flex-row gap-4 w-full'>
