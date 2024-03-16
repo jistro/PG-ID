@@ -36,7 +36,7 @@ body {
   .dashboard {
     display: grid;
     grid-template-columns: 1.5fr 0.5fr;
-    grid-template-rows: 0.4fr 0.6fr;
+    grid-template-rows: 1fr 2fr 2fr;
     grid-template-areas:
       'user stats'
       'actions actions'
