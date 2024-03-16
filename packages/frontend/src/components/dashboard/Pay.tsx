@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 
 function Pay() {
   const [value, setValue] = useState(0);
+  const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) return setValue(0);
+    setValue(parseFloat(e.target.value));
+  };
   return (
     <>
       <div className='grid flex-col-2 gap-2  w-full'>
@@ -17,6 +21,7 @@ function Pay() {
               autoCorrect='off'
               spellCheck='false'
               type='text'
+              onChange={handleChangeValue}
             />
           </div>
           <div className=''>
@@ -44,6 +49,8 @@ function Pay() {
               autoCorrect='off'
               spellCheck='false'
               type='text'
+              disabled
+              value={value * 0.99}
             />
           </div>
           <div className=''>
@@ -54,7 +61,7 @@ function Pay() {
             <p className='text-[#C0ABA7]'>Balance: </p>
           </div>
         </div>
-        <button className='bg-[#C0ABA7] h-[72px]'>hola</button>
+        <button className='bg-[#C0ABA7] h-[72px]'>Swap</button>
       </div>
     </>
   );
