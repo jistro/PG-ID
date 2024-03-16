@@ -13,3 +13,9 @@
 [submodule "packages/contracts/lib/v4-periphery"]
 	path = packages/contracts/lib/v4-periphery
 	url = https://github.com/Uniswap/v4-periphery
+[submodule "lib/eas-sdk"]
+	path = lib/eas-sdk
+	url = https://github.com/ethereum-attestation-service/eas-sdk
+[submodule "packages/smartContracts/lib/eas-contracts"]
+	path = packages/smartContracts/lib/eas-contracts
+	url = https://github.com/ethereum-attestation-service/eas-contracts
