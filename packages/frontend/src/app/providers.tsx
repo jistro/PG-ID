@@ -27,7 +27,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
       settings={{
         environmentId: '425efe30-9927-45e7-8df6-87767fef70ef',
         walletConnectors: [EthereumWalletConnectors],
-
       }}
     >
       <WagmiProvider config={config}>
