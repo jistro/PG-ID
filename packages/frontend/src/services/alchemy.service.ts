@@ -4,7 +4,7 @@ import { Address } from 'viem'
 
 const config = {
   apiKey: alchemyApiKey,
-  network: Network.ARB_MAINNET
+  network: Network.BASE_SEPOLIA
 }
 
 const alchemy = new Alchemy(config)
