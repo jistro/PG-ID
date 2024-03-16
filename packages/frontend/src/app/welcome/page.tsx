@@ -1,8 +1,5 @@
 "use client";
-import {
-  DynamicConnectButton,
-  useDynamicModals,
-} from "@dynamic-labs/sdk-react-core";
+import Link from "next/link";
 
 export default function Welcome() {
   return (
@@ -21,19 +18,24 @@ export default function Welcome() {
           </span>
 		  </div>
           <div className="flex flex-row gap-4 justify-center ">
+
             <div className="border-4 flex items-center py-8   flex-col justify-center w-full h-full border-[#C0ABA7]">
+			<Link href="/" className="hover:animate-pulse">
               <img src="/new.svg"></img>
               <div className="flex items-center py-8 text-xl justify-center flex-col">
                 <span className="text-[#C0ABA7]">I{"'"}m new here</span>
                 <span className="text-[#594440]">Show me around ={")"}</span>
               </div>
+			  </Link>
             </div>
             <div className="border-4 w-full py-8 flex items-center flex-col h-full border-[#C0ABA7]">
+			<Link href="/" className="hover:animate-pulse">
               <img src="/expert.svg"></img>
               <div className="flex items-center py-8 text-xl justify-center flex-col">
                 <span className="text-[#C0ABA7]">I know what I{"'"}m doing</span>
                 <span className="text-[#594440]">Launch the Dapp!</span>
               </div>
+			</Link>
             </div>
           </div>
         </div>
