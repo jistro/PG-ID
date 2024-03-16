@@ -49,3 +49,7 @@ deployRegister:
 deployManager:
 	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
 	@forge script script/DeployManager.s.sol:DeployManager $(ARB_ARGS)
+
+deployCoins:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/DeployCoins.s.sol:DeployCoins $(ARB_ARGS)
