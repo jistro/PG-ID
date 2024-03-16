@@ -9,7 +9,7 @@ import {PoolKey} from "@uniswap/v4-core/src/types/PoolKey.sol";
 
 import {RegisterSystem} from "./RegisterSystem.sol";
 
-contract DynamicFeeHook is BaseHook {
+contract DinamicFeeByLevelHook is BaseHook {
 
     address public registerUser = 0x5FbDB2315678afecb367f032d93F642f64180aa3;
     constructor(IPoolManager _poolManager) BaseHook(_poolManager) {}

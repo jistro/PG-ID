@@ -55,7 +55,7 @@ contract RegisterSystem is ERC721, AccessControl {
         address _user
     ) external onlyRole(ATTESTER_ROLE){
 
-        dataVerfificationUser[_user].points = _points;
+        dataVerfificationUser[_user].points += _points;
         if (_points >10 && _points < 30) {
             dataVerfificationUser[_user].level = 1;
         } else if (_points >= 30 && _points < 75) {

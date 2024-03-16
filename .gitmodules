@@ -19,3 +19,9 @@
 [submodule "packages/smartContracts/lib/eas-contracts"]
 	path = packages/smartContracts/lib/eas-contracts
 	url = https://github.com/ethereum-attestation-service/eas-contracts
+[submodule "lib/solmate"]
+	path = lib/solmate
+	url = https://github.com/transmissions11/solmate
+[submodule "packages/smartContracts/lib/solmate"]
+	path = packages/smartContracts/lib/solmate
+	url = https://github.com/transmissions11/solmate
