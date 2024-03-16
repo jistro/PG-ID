@@ -95,15 +95,15 @@ const Mint: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center pt-8 mx-auto rounded-lg sm:mx-[200px] sm:px-16  bg-white">
-        <div className="flex flex-col py-8">
-          <h2 className="font-sans text-4xl text-[#594440] border-4 border-dashed font-bold text-center border-b-[#C0ABA7]">
+      <div className="flex flex-col items-center   mx-auto rounded-lg sm:mx-[200px]    bg-transparent">
+        <div className="flex flex-col py-8 bg-nouns-pastel w-[548px]  ">
+		<h2 className="font-sans text-4xl text-[#594440] border-4 border-dashed font-bold text-center border-b-[#C0ABA7]">
             Create your PG ID Avatar
           </h2>
         </div>
-        <div className="grid gap-4 sm:grid-rows-2 bg-nouns-pastel">
+        <div className="grid gap-4 sm:grid-rows-2 h-[750px] bg-nouns-pastel">
           <div
-            className={`w-full p-8 rounded-lg bg-white/50 ${
+            className={`w-full p-8 flex items-center justify-center  bg-white/50 ${
               selectedBackground &&
               selectedBody &&
               selectedGlasses &&
@@ -114,7 +114,7 @@ const Mint: React.FC = () => {
             <canvas ref={canvasRef} width={400} height={400} />
           </div>
           <div className="w-full gap-8 p-2 rounded-lg text-3xl bg-nouns-pastel ">
-            <div className="flex items-center w-[542px] h-[72px] flex-grow gap-32 my-4 justify-center p-1 mx-4 border-4 border-[#C0ABA7] ">
+		  <div className="flex items-center w-[500px] h-[60px] flex-grow gap-32 my-4 justify-center p-1 mx-4 border-4 border-[#C0ABA7] ">
               <button
                 className="text-[#594440]"
                 onClick={() =>
@@ -138,7 +138,7 @@ const Mint: React.FC = () => {
               </button>
             </div>
            
-            <div className="flex items-center w-[542px] h-[72px] flex-grow gap-32 my-4 justify-center p-1 mx-4 border-4 border-[#C0ABA7] ">
+            <div className="flex items-center w-[500px] h-[60px] flex-grow gap-32 my-4 justify-center p-1 mx-4 border-4 border-[#C0ABA7] ">
               <button
                 className="text-[#594440]"
                 onClick={() =>
@@ -157,7 +157,7 @@ const Mint: React.FC = () => {
                 {">"}
               </button>
             </div>
-            <div className="flex items-center w-[542px] h-[72px] flex-grow gap-32 my-4 justify-center p-1 mx-4 border-4 border-[#C0ABA7] ">
+            <div className="flex items-center w-[500px] h-[60px] flex-grow gap-32 my-4 justify-center p-1 mx-4 border-4 border-[#C0ABA7] ">
               <button
                 className="text-[#594440]"
                 onClick={() =>
@@ -176,7 +176,7 @@ const Mint: React.FC = () => {
                 {">"}
               </button>
             </div>
-            <div className="grid grid-cols-2 px-8 mt-16">
+            <div className="grid grid-cols-2 px-8 mt-8">
               <div>
                 <h1 className="text-[#594440]">Powered by</h1>
                 <img src="/powered.svg" alt="powered" />
@@ -184,11 +184,10 @@ const Mint: React.FC = () => {
               <button
                 disabled={isNFTminting}
                 className={cn(
-                  "w-fill py-2 mt-2 cursor-pointer flex flex-grow flex-row gap-4 items-center justify-center text-[#594440] border-4 border-[#C0ABA7]",
+                  "w-full py-2 mt-2 cursor-pointer flex flex-grow flex-row gap-4 items-center justify-center text-[#594440] border-4 border-[#C0ABA7]",
                   selectedBackground &&
                     selectedBody &&
-                    selectedGlasses &&
-                    selectedLvl
+                    selectedGlasses
                     ? ""
                     : "opacity-0 pointer-events-none"
                 )}

@@ -21,7 +21,10 @@ export default function RootLayout({
 	<html lang="en">
       <body className={londrina.className}>
         <Providers>
+			<div className='bg-nouns-blue'>
+
           {children}
+			</div>
         </Providers>
       </body>
 	  </html>
