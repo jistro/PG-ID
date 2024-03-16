@@ -35,14 +35,10 @@ deployTest:
 	@echo "--==Deploying test contracts in anvil local testnet==--"
 	@forge script script/DeployTest.s.sol:DeployTest $(NETWORK_ARGS)
 
-deploy:
-	@echo "--==Deploying test contracts in Albitrum goerli testnet==--"
-	@forge script script/Deploy.s.sol:Deploy $(ALBITRUM_TESTNET_ARGS)
+deployRegisterEth:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/DeployRegister.s.sol:DeployRegister $(TESTNET_ARGS)
 
-deployGmFam:
-	@echo "--==Deploying test contracts in testnet GmFam==--"
-	@forge script script/DeployGmFam.s.sol:DeployGmFam $(ALBITRUM_TESTNET_ARGS)
-
-deployNFT:
-	@echo "--==Deploying test contracts in Albitrum goerli testnet==--"
-	@forge script script/DeployNFT.s.sol:DeployNFT $(ALBITRUM_TESTNET_ARGS)
+deployRegisterArb:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/DeployRegister.s.sol:DeployRegister $(ALBITRUM_TESTNET_ARGS)

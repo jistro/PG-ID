@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
-contract RegistrySystem is ERC721, AccessControl {
+contract RegisterSystem is ERC721, AccessControl {
 
     uint256 private _nextTokenId;
 
@@ -51,22 +51,23 @@ contract RegistrySystem is ERC721, AccessControl {
     }
 
     function setPointsData(
-        uint256 _points
+        uint256 _points,
+        address _user
     ) external onlyRole(ATTESTER_ROLE){
 
-        dataVerfificationUser[msg.sender].points = _points;
+        dataVerfificationUser[_user].points = _points;
         if (_points >10 && _points < 30) {
-            dataVerfificationUser[msg.sender].level = 1;
+            dataVerfificationUser[_user].level = 1;
         } else if (_points >= 30 && _points < 75) {
-            dataVerfificationUser[msg.sender].level = 2;
+            dataVerfificationUser[_user].level = 2;
         } else if (_points >= 75 && _points < 150) {
-            dataVerfificationUser[msg.sender].level = 3;
+            dataVerfificationUser[_user].level = 3;
         } else if (_points >= 150 && _points < 300) {
-            dataVerfificationUser[msg.sender].level = 4;
+            dataVerfificationUser[_user].level = 4;
         } else if (_points >= 300) {
-            dataVerfificationUser[msg.sender].level = 5;
+            dataVerfificationUser[_user].level = 5;
         } else {
-            dataVerfificationUser[msg.sender].level = 0;
+            dataVerfificationUser[_user].level = 0;
         }
     
         dataVerfificationUser[msg.sender].timeStamp = block.timestamp;
@@ -90,6 +91,18 @@ contract RegistrySystem is ERC721, AccessControl {
         } else {
             boddyOfProfile[msg.sender][_part] = _mod;
         }
+    }
+
+    function getLevelOfUser(address _user) public view returns (uint256) {
+        return dataVerfificationUser[_user].level;
+    }
+
+    function getPointsOfUser(address _user) public view returns (uint256) {
+        return dataVerfificationUser[_user].points;
+    }
+
+    function getUserData(address _user) public view returns (verificationMetadata memory) {
+        return dataVerfificationUser[_user];
     }
 
     function setAdmin(address _admin) public onlyRole(ADMIN_ROLE) {
