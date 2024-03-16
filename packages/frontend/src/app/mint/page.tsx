@@ -101,7 +101,7 @@ const Mint: React.FC = () => {
             Create your PG ID Avatar
           </h2>
         </div>
-        <div className="grid gap-4 sm:grid-rows-2 h-[750px] bg-nouns-pastel">
+        <div className="grid gap-4 sm:grid-rows-2 h-[800px] bg-nouns-pastel">
           <div
             className={`w-full p-8 flex items-center justify-center  bg-white/50 ${
               selectedBackground &&
