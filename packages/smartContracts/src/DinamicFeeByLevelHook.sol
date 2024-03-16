@@ -11,7 +11,7 @@ import {RegisterSystem} from "./RegisterSystem.sol";
 
 contract DinamicFeeByLevelHook is BaseHook {
 
-    address public registerUser = 0x5FbDB2315678afecb367f032d93F642f64180aa3;
+    address public registerUser = 0x96d3F6c20EEd2697647F543fE6C08bC2Fbf39758;
     constructor(IPoolManager _poolManager) BaseHook(_poolManager) {}
 
     function getHookPermissions() public pure override returns (Hooks.Permissions memory ) {
@@ -32,8 +32,7 @@ contract DinamicFeeByLevelHook is BaseHook {
     /// @notice Sets the swap fee for a pool
     /// @dev Define your own custom logic here!
     function setDynamicFee(PoolKey calldata key, address user) public {
-        //uint256 level = RegisterSystem(registerUser).getLevelOfUser(user);
-        uint256 level = 1;
+        uint256 level = RegisterSystem(registerUser).getLevelOfUser(user);
         if (level == 0) {
             poolManager.updateDynamicSwapFee(key, 10000); // 1%
         } else if (level == 1) {

@@ -11,7 +11,7 @@ contract RegisterSystem is ERC721, AccessControl {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant ATTESTER_ROLE = keccak256("ATTESTER_ROLE");
 
-    string constant PGID = ".pjid";
+    string constant PGID = ".pj.id";
 
     struct verificationMetadata {
         uint256 timeStamp;
@@ -25,13 +25,19 @@ contract RegisterSystem is ERC721, AccessControl {
 
     mapping ( address user => verificationMetadata ) public dataVerfificationUser;
     constructor(address admin)
-        ERC721("MyToken", "MTK")
+        ERC721("PG ID", "PJ ID")
     {
         _grantRole(ADMIN_ROLE, admin);
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "test://pgid/";
+        return "https://bafkreihwvwpegkg7d7ko2e4xzi4vu5vs453r7u3dz3cnkymmzpjxtjiygi.ipfs.nftstorage.link/";
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        _requireOwned(tokenId);
+
+        return _baseURI();
     }
 
     function safeMint(

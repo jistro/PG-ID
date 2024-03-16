@@ -98,6 +98,9 @@ contract DynamicFeeHookTest is Test, Deployers {
         registerSystem.setPointsData(800, userB);
         vm.stopBroadcast();
 
+        console.log("address of registerSystem: ", address(registerSystem));
+        console.log("userA level: ", registerSystem.getLevelOfUser(userA));
+        console.log("userB level: ", registerSystem.getLevelOfUser(userB));
 
     }
 
@@ -138,7 +141,7 @@ contract DynamicFeeHookTest is Test, Deployers {
 
         // Perform a test swap //forge-std/TestTest.sol
         bool zeroForOne = true;
-        int256 amountSpecified = -1e18;
+        int256 amountSpecified = 1e18;
         bytes memory data = abi.encode(userB);
         BalanceDelta swapDelta = Deployers.swap(key, zeroForOne, amountSpecified, data);
         // ------------------- //

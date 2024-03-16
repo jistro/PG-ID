@@ -29,6 +29,8 @@ NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KE
 
 TESTNET_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE) --broadcast --verify --etherscan-api-key $(API_KEY) -vvvv
 ALBITRUM_TESTNET_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE) --broadcast -vvvv
+ARB_ARGS := --rpc-url $(RPC_URL_ARB) --private-key $(PRIVATE) --broadcast --verify --etherscan-api-key $(API_KEY_ARB) -vvvv
+
 compile:
 	forge compile
 deployTest:
@@ -39,6 +41,11 @@ deployRegisterEth:
 	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
 	@forge script script/DeployRegister.s.sol:DeployRegister $(TESTNET_ARGS)
 
-deployRegisterArb:
+deployRegister:
 	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
-	@forge script script/DeployRegister.s.sol:DeployRegister $(ALBITRUM_TESTNET_ARGS)
+	@forge script script/DeployRegister.s.sol:DeployRegister $(ARB_ARGS)
+
+
+deployManager:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/DeployManager.s.sol:DeployManager $(ARB_ARGS)
