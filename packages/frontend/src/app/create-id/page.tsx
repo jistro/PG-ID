@@ -1,51 +1,50 @@
-'use client'
-import ArtButton from "@/components/Ar"
-import ClimateButton from "@/components/Climate"
-import InnovationButton from "@/components/Innovation"
+'use client';
+import ArtButton from '@/components/Art';
+import ClimateButton from '@/components/Climate';
+import InnovationButton from '@/components/Innovation';
 
 export default function CreateIdPage() {
-
   return (
     <>
-      <div className="flex flex-col items-center pt-8 mx-auto rounded-lg py-24 h-[900px] sm:px-16 bg-white">
-        <div className="w-1/2 gap-4 py-24 bg-nouns-pastel">
-          <h1 className="font-sans mx-12 text-4xl text-[#594440] border-4 pb-4 border-dashed font-bold border-b-[#C0ABA7]">
+      <div className='flex flex-col items-center justify-center rounded-lg  sombra   h-screen'>
+        <div className='w-1/2 gap-4 p-8 bg-nouns-pastel h-fit max-h-[90vh]'>
+          <h3 className='font-sans text-4xl text-[#594440] border-4 pb-4 border-dashed font-bold border-b-[#C0ABA7]'>
             Set-Up your PG ID
-          </h1>
-          <div className="gap-8 p-8 rounded-lg min-w-6xl bg-nouns-pastel">
-            <h1 className='text-[#594440] text-3xl px-4'> Create your name</h1>
-            <label className="flex p-4 w-full flex-grow gap-4 mt-2 mx-4 border-4 border-[#C0ABA7] mb-4 ">
+          </h3>
+          <div className='gap-4 p-8 flex flex-col rounded-lg  bg-nouns-pastel'>
+            <h3 className='text-[#594440] text-3xl '> Create your name</h3>
+            <label className='flex p-4 w-full flex-grow gap-4  border-4 border-[#C0ABA7] '>
               <input
-                className="flex-grow w-full font-light bg-transparent text-2xl outline-none text-[#C0ABA7] rounded-xl"
-                placeholder="yourname.pg.id"
-                inputMode="decimal"
-                autoComplete="off"
-                autoCorrect="off"
-                spellCheck="false"
-                type="text"
+                className='flex-grow w-full font-light bg-transparent text-2xl outline-none text-[#C0ABA7] rounded-xl'
+                placeholder='yourname.pg.id'
+                inputMode='decimal'
+                autoComplete='off'
+                autoCorrect='off'
+                spellCheck='false'
+                type='text'
               />
             </label>
-            <h1 className='text-[#594440] text-3xl px-4'> Select your interests</h1>
+            <h3 className='text-[#594440] text-3xl'>Select your interests</h3>
             <ClimateButton />
-			<InnovationButton />
-			<ArtButton />
-              <div className='flex flex-row gap-4 justify-between mt-8 mx-4'  >
-              <button className="border-4 border-[#C0ABA7] flex flex-row items-center h-[72px] w-[170px] px-4">
-				<img src="/cancel.svg"></img>
-				<h3 className="w-[100px] w-full font-thin text-3xl flex flex-grow text-[#594440]">
+            <InnovationButton />
+            <ArtButton />
+            <div className='flex flex-row gap-4 justify-between '>
+              <button className='border-4 border-[#C0ABA7] flex flex-row items-center  p-4'>
+                <img src='/cancel.svg'></img>
+                <h3 className=' w-full font-thin text-3xl flex flex-grow text-[#594440]'>
                   Cancel
                 </h3>
-			  </button>
-			  <button className="border-4 border-[#C0ABA7] bg-[#C0ABA7] flex flex-row items-center h-[72px] w-[170px] px-4">
-				<h3 className="w-[100px] w-full  font-thin text-3xl flex flex-grow text-white">
+              </button>
+              <button className='border-4 border-[#C0ABA7] bg-[#C0ABA7] flex flex-row items-center  p-4'>
+                <h3 className=' w-full  font-thin text-3xl flex flex-grow text-white'>
                   Continue
                 </h3>
-				<img src="/next.svg"></img>
-			  </button>
+                <img src='/next.svg'></img>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

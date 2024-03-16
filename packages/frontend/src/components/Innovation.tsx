@@ -11,10 +11,10 @@ const InnovationButton = () => {
   return (
     <div className="relative">
       <div
-        className="flex p-4 w-full flex-grow gap-4 mt-2 mx-4 border-4 border-[#C0ABA7] hover:bg-[#C0ABA7] hover:border-[#594440] cursor-pointer"
+        className="flex p-4 w-full flex-grow gap-4 border-4 border-[#C0ABA7] hover:bg-[#C0ABA7] hover:border-[#594440] cursor-pointer"
         onClick={toggleDropdown}
       >
-        <h3 className="w-[100px] font-thin text-3xl flex flex-grow text-[#594440]">Innovation</h3>
+        <h3 className=" font-thin text-3xl flex flex-grow text-[#594440]">Innovation</h3>
         <img src="/drop.svg" alt="Icono de clima"></img>
       </div>
       {isOpen && (
