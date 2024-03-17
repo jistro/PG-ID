@@ -90,7 +90,7 @@ contract RegisterSystem is ERC721, AccessControl {
             revert();
         }
 
-        if (_part == 3) { //hat unlockable
+        if (_part == 3) { 
             if (_mod <= dataVerfificationUser[msg.sender].level) {
                 boddyOfProfile[msg.sender][_part] = _mod;
             } else {
