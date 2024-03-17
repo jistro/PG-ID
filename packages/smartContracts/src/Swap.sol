@@ -7,16 +7,14 @@ import {IHooks} from "@uniswap/v4-core/src/interfaces/IHooks.sol";
 import {BalanceDelta} from "@uniswap/v4-core/src/types/BalanceDelta.sol";
 import {IPoolManager} from "@uniswap/v4-core/src/interfaces/IPoolManager.sol";
 import {TickMath} from "@uniswap/v4-core/src/libraries/TickMath.sol";
+import {Deployers} from "@uniswap/v4-core/test/utils/Deployers.sol";
 
 
 address constant USDT_MOCK_ADDRESS = address(0xEce6af52f8eDF69dd2C216b9C3f184e5b31750e9); //mUNI deployed to GOERLI -- insert your own contract address here
 address constant USDC_MOCK_ADDRESS = address(0x63ba29cAF4c40DaDA8a61D10AB5D2728c806b61f); //mUSDC deployed to GOERLI -- insert your own contract address here
 
-contract Swap {
+contract Swap is Deployers {
     bool zeroForOne = true;
-    address rs;
-    uint160 public constant MIN_PRICE_LIMIT = TickMath.MIN_SQRT_RATIO + 1;
-    uint160 public constant MAX_PRICE_LIMIT = TickMath.MAX_SQRT_RATIO - 1;
 
     function swapInPool(
         int256 _amountSpecified
@@ -27,14 +25,6 @@ contract Swap {
             Currency.wrap(token0), Currency.wrap(token1), 3000, 60, IHooks(0x020e22422E7A60035EEB9F12499C1A348FeC0D5B)
         );
         bytes memory data = abi.encode(msg.sender);
-        IPoolManager.SwapParams memory params = IPoolManager.SwapParams({
-            zeroForOne: zeroForOne,
-            amountSpecified: _amountSpecified,
-            sqrtPriceLimitX96: zeroForOne ? MIN_PRICE_LIMIT : MAX_PRICE_LIMIT // unlimited impact
-        });
-         PoolSwapTest.TestSettings memory testSettings =
-            PoolSwapTest.TestSettings({withdrawTokens: true, settleUsingTransfer: true, currencyAlreadySent: false});
-
-        PoolSwapTest(0x60AbEb98b3b95A0c5786261c1Ab830e3D2383F9e).swap(pool, params, testSettings, data);
+        Deployers.swap(pool, zeroForOne, _amountSpecified, data);
     }
 }
