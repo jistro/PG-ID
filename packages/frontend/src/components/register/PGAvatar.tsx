@@ -60,7 +60,7 @@ function PGAvatar({ username }: { username: string }) {
               <div className='flex items-center w-full justify-between gap-32  p-4  border-4 border-[#C0ABA7] '>
                 <button
                   className='text-[#594440]'
-                  disabled={data.glasses === 1}
+                  disabled={data.glasses === 0}
                   onClick={() =>
                     setData((prev) => ({
                       ...prev,
@@ -72,7 +72,7 @@ function PGAvatar({ username }: { username: string }) {
                 </button>
                 <h3 className='w-[100px] font-thin text-[#594440]'>Glasses</h3>
                 <button
-                  disabled={data.glasses === 100}
+                  disabled={data.glasses === 20}
                   className='text-[#594440]'
                   onClick={() =>
                     setData((prev) => ({
@@ -86,7 +86,7 @@ function PGAvatar({ username }: { username: string }) {
               </div>
               <div className='flex items-center w-full justify-between gap-32  p-4  border-4 border-[#C0ABA7] '>
                 <button
-                  disabled={data.body === 1}
+                  disabled={data.body === 0}
                   className='text-[#594440]'
                   onClick={() =>
                     setData((prev) => ({
@@ -99,7 +99,7 @@ function PGAvatar({ username }: { username: string }) {
                 </button>
                 <h3 className='w-[100px] font-thin text-[#594440]'>Body</h3>
                 <button
-                  disabled={data.body === 100}
+                  disabled={data.body === 20}
                   className='text-[#594440]'
                   onClick={() =>
                     setData((prev) => ({
