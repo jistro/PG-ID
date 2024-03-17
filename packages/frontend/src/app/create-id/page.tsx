@@ -20,7 +20,7 @@ function Page() {
   return (
     <>
       {step === 0 && <UserData setStep={setStep} />}
-      {step === 1 && <PGAvatar username={(data.username as string) ?? ''} />}
+      {step === 1 && <PGAvatar username={data.username as string} />}
     </>
   );
 }

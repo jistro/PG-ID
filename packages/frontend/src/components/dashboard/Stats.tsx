@@ -40,9 +40,9 @@ function Stats() {
           <span>RPGF rewards</span>
           <img className='w-8' src='/rgp.svg'/>
         </div>
-        <p className='text-[#594440] pb-5'>{stats.RPGF}</p>
+        <p className='text-[#594440] pb-5'>{stats.RPGF} PG Points</p>
         <span className=' text-[#94716B]'>Donation rewards</span>
-        <p className='text-[#594440]'>{stats.Donations}</p>
+        <p className='text-[#594440]'>{stats.Donations} PG Points</p>
       </div>
       <button
         onClick={handleUpdateImpact}
