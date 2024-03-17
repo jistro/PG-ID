@@ -4,6 +4,7 @@ import { Actions } from "@/components/dashboard/Actions";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { Perk } from "@/components/dashboard/Perk";
+import { motion } from 'framer-motion';
 
 function StepFour() {
   const router = useRouter();
@@ -12,7 +13,9 @@ function StepFour() {
     router.push("/step-five");
   };
   return (
-    <main
+    <motion.main
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
       className="h-screen flex justify-center items-center relative"
       onClick={handleNextStep}
       style={{ cursor: "pointer" }}
@@ -41,7 +44,7 @@ function StepFour() {
         </span>
         <Actions />
       </div>
-    </main>
+    </motion.main>
   );
 }
 

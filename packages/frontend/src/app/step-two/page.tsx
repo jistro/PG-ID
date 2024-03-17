@@ -3,6 +3,7 @@ import { Stats, User } from "@/components";
 import { Actions } from "@/components/dashboard/Actions";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { motion } from 'framer-motion';
 
 function StepTwo() {
   const router = useRouter();
@@ -11,7 +12,9 @@ function StepTwo() {
     router.push("/step-three");
   };
   return (
-    <main
+    <motion.main
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
       className="h-screen flex justify-center items-center relative"
       onClick={handleNextStep}
       style={{ cursor: "pointer" }}
@@ -42,7 +45,7 @@ function StepTwo() {
 
         <Actions />
       </div>
-    </main>
+    </motion.main>
   );
 }
 

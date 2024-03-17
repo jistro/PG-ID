@@ -16,9 +16,9 @@ function User() {
           <span>Verified</span>
           <img className='w-8' src='/verified.svg'></img>
         </div>
-        <p className=' '>
+        <p>
           <span className='text-[#594440]'>
-            {((data.username as string) ?? '').split('.')[0]}
+            {((data.username as string) ?? 'Luuk.id').split('.')[0]}
           </span>
           <span className='text-[#C0ABA7]'>.pg.id</span>
         </p>
