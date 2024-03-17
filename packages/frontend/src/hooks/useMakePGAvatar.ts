@@ -8,7 +8,11 @@ function useMakePGAvatar () {
   const { data: walletClient } = useWalletClient()
   const { address } = useAccount()
 
-  const creatPGAvatar = async (username: string) => {
+  const createPGAvatar = async (data: {
+    body: number
+    glasses: number
+    background: number
+  }) => {
     if (!walletClient || !address) return
     const { publicClient, smartAccountClient } =
       await getGaslessTransactionClient(walletClient)
@@ -20,13 +24,12 @@ function useMakePGAvatar () {
         wallet: smartAccountClient
       }
     })
-    const tx = await registryContract.write.safeMint([
-      address as string,
-      username
-    ])
-    console.debug(tx)
+    await registryContract.write.customProfileData([0, data.background])
+    await registryContract.write.customProfileData([1, data.glasses])
+    await registryContract.write.customProfileData([2, data.body])
+    await registryContract.write.customProfileData([3, 0])
   }
-  return { creatPGAvatar }
+  return { createPGAvatar }
 }
 
 export { useMakePGAvatar }

@@ -3,14 +3,20 @@
 import React, { useState } from 'react';
 import cn from 'clsx';
 import { Noun } from '../Nouns';
+import { useMakePGAvatar } from '@/hooks/useMakePGAvatar';
 
 function PGAvatar({ username }: { username: string }) {
+  const { createPGAvatar } = useMakePGAvatar();
   const [data, setData] = useState({
     background: 0,
     body: 0,
     glasses: 0,
     head: 50,
   });
+
+  const handleCreate = async () => {
+    await createPGAvatar(data);
+  };
 
   return (
     <>
@@ -120,6 +126,7 @@ function PGAvatar({ username }: { username: string }) {
                   className={cn(
                     'w-full p-4 cursor-pointer flex flex-grow flex-row gap-4 items-center justify-center text-[#594440] border-4 border-[#C0ABA7]'
                   )}
+                  onClick={handleCreate}
                 >
                   Create
                   <img src='save.svg' alt='save' />

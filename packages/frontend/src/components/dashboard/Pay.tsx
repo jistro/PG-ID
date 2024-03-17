@@ -9,13 +9,12 @@ function Pay({ level }: { level: number }) {
     setValue(parseFloat(e.target.value));
   };
   const { swap } = useSwap();
-
   const operator = useMemo(() => {
     if (!level) return 0.9;
-    if (level === 1) return 0.9;
-    if (level === 2) return 0.95;
-    if (level === 3) return 0.98;
-    if (level > 3) return 1;
+    if (Number(level) === 1) return 0.9;
+    if (Number(level) === 2) return 0.95;
+    if (Number(level) === 3) return 0.98;
+    return 0.9
   }, [level]);
   const handleSwap = async () => {
     await swap(value.toString());
