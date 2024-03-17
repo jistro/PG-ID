@@ -9,7 +9,7 @@ import { DynamicWagmiConnector } from '@dynamic-labs/wagmi-connector';
 import { createConfig, WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http } from 'viem';
-import { sepolia, arbitrum } from 'viem/chains';
+import { baseSepolia } from 'viem/chains';
 import {
   ApolloClient,
   InMemoryCache,
@@ -19,11 +19,10 @@ import {
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const config = createConfig({
-    chains: [sepolia, arbitrum],
+    chains: [baseSepolia],
     multiInjectedProviderDiscovery: false,
     transports: {
-      [sepolia.id]: http(),
-      [arbitrum.id]: http(),
+      [baseSepolia.id]: http(),
     },
   });
 

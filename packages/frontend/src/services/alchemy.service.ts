@@ -1,5 +1,10 @@
 import { alchemyApiKey } from '@/constants'
-import { Alchemy, AssetTransfersCategory, Network } from 'alchemy-sdk'
+import {
+  Alchemy,
+  AssetTransfersCategory,
+  AssetTransfersResponse,
+  Network
+} from 'alchemy-sdk'
 import { Address } from 'viem'
 
 const config = {
@@ -8,26 +13,49 @@ const config = {
 }
 
 const alchemy = new Alchemy(config)
+
+function calculateAccumulatedPoints (
+  transactions: AssetTransfersResponse
+): number {
+  let totalValue = 0
+
+  transactions.transfers.forEach(transaction => {
+    if (transaction.rawContract.value) {
+      const decimalValue = parseInt(transaction.rawContract.value, 16)
+      totalValue += decimalValue
+    }
+  })
+
+  const formattedTotalValue = totalValue / 1e6 // Asumiendo 6 decimales para ERC20
+
+  // Calcular puntos basados en el total acumulado
+  if (formattedTotalValue >= 1 && formattedTotalValue < 100) {
+    return 10
+  } else if (formattedTotalValue >= 100 && formattedTotalValue < 500) {
+    return 25
+  } else if (formattedTotalValue >= 500) {
+    return 50
+  }
+
+  return 0 // En caso de que el valor no caiga en ninguno de los rangos
+}
 export async function getUserData (user: Address) {
   const RPGF = await alchemy.core.getAssetTransfers({
     fromBlock: '0x0',
-    fromAddress: '0x017FF2643E1A6d500A54e2c15f8186C87795CbBe',
+    fromAddress: '0x68C2A24e564Df4D908EA9fb7A2ec4F38846eD8FA',
     toAddress: user,
     excludeZeroValue: true,
-    category: [
-      AssetTransfersCategory.ERC20
-    ]
+    category: [AssetTransfersCategory.ERC20]
   })
   const Donations = await alchemy.core.getAssetTransfers({
     fromBlock: '0x0',
     fromAddress: user,
-    toAddress: '0x5E15DBf75d3819Dd9DA31Fc159Ce5bc5f3751AB0',
+    toAddress: '0x68C2A24e564Df4D908EA9fb7A2ec4F38846eD8FA',
     excludeZeroValue: true,
-    category: [
-      AssetTransfersCategory.ERC20
-    ]
+    category: [AssetTransfersCategory.ERC20]
   })
-  console.debug(RPGF, user)
-  return { RPGF, Donations }
+  return {
+    RPGF: calculateAccumulatedPoints(RPGF),
+    Donations: calculateAccumulatedPoints(Donations)
+  }
 }
-

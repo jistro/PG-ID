@@ -5,19 +5,22 @@ import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { Address } from 'viem';
 import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 import { useRouter } from 'next/navigation';
+import { useAttest } from '@/hooks/useAttest';
 
 function Stats() {
   const { address } = useAccount();
   const { disconnect } = useDisconnect();
   const [stats, setStats] = useState({ RPGF: 0, Donations: 0 });
   const { push } = useRouter();
+  const { makeAttest } = useAttest();
   useEffect(() => {
     async function getData() {
       if (!address) return;
       const { Donations, RPGF } = await getUserData(address as Address);
+      console.debug(Donations, RPGF);
       setStats({
-        RPGF: RPGF.transfers.length,
-        Donations: Donations.transfers.length,
+        RPGF,
+        Donations,
       });
     }
     getData();
@@ -25,6 +28,10 @@ function Stats() {
   const handleDisconnect = () => {
     disconnect();
     push('/');
+  };
+  const handleUpdateImpact = async () => {
+    await makeAttest('Retro PGF', stats.RPGF);
+    await makeAttest('Donations', stats.Donations);
   };
   return (
     <div className='stats w-full flex flex-col gap-4 h-full py-8 text-xl justify-center'>
@@ -37,7 +44,10 @@ function Stats() {
         <span className=' text-[#94716B]'>Donation rewards</span>
         <p className='text-[#594440]'>{stats.Donations}</p>
       </div>
-      <button className='border-2 p-4 border-[#C0ABA7] border-[3.5px] text-[#594440] w-full'>
+      <button
+        onClick={handleUpdateImpact}
+        className='hover:bg-[#C0ABA7] p-4 border-[#C0ABA7] border-[3.5px] text-[#594440] w-full'
+      >
         Update impact
       </button>
       <button
