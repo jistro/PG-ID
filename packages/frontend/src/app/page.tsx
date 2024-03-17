@@ -1,15 +1,20 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { useAccount } from 'wagmi';
-import { DynamicConnectButton } from '@dynamic-labs/sdk-react-core';
+import {
+  DynamicConnectButton,
+  useDynamicContext,
+} from '@dynamic-labs/sdk-react-core';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Notification } from '@/components/Notification';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Home() {
-  const { isConnected } = useAccount();
   const { push } = useRouter();
-  if (isConnected) {
-    push('/dashboard');
-  }
+  const { handleLogOut, isAuthenticated } = useDynamicContext();
+  useEffect(() => {
+    handleLogOut();
+  }, []);
+  if (isAuthenticated) push('/create-id');
   return (
     <main className='h-screen'>
       <div className='flex flex-col items-center  mx-auto rounded-lg h-full sm:px-16  bg-transparent'>
@@ -39,21 +44,22 @@ export default function Home() {
               </Link>
             </div>
             <div className='border-4 w-full py-8 flex items-center flex-col h-full border-[#C0ABA7]'>
-              <Link href='/' className='hover:animate-pulse'>
-                <DynamicConnectButton>
-                  <img src='/expert.svg'></img>
-                  <div className='flex items-center py-8 text-xl justify-center flex-col'>
-                    <span className='text-[#C0ABA7]'>
-                      I know what I{"'"}m doing
-                    </span>
-                    <span className='text-[#594440]'>Launch the Dapp!</span>
-                  </div>
-                </DynamicConnectButton>
-              </Link>
+              <DynamicConnectButton>
+                <img src='/expert.svg'></img>
+                <div className='flex items-center py-8 text-xl justify-center flex-col'>
+                  <span className='text-[#C0ABA7]'>
+                    I know what I{"'"}m doing
+                  </span>
+                  <span className='text-[#594440]'>Launch the Dapp!</span>
+                </div>
+              </DynamicConnectButton>
             </div>
           </div>
         </motion.div>
       </div>
+      <Notification title='Helloo!'>
+        <p className='text-[#594440]'>Select an option to start the journey!</p>
+      </Notification>
     </main>
   );
 }

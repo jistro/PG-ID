@@ -4,9 +4,14 @@ import React, { useState } from 'react';
 import cn from 'clsx';
 import { Noun } from '../Nouns';
 import { useMakePGAvatar } from '@/hooks/useMakePGAvatar';
+import { useGetAvatar } from '@/hooks/useGetAvatar';
+import { useRouter } from 'next/navigation';
 
 function PGAvatar({ username }: { username: string }) {
   const { createPGAvatar } = useMakePGAvatar();
+  const { push } = useRouter();
+  const { data: avatar } = useGetAvatar();
+  if (avatar.head) push('/dashboard');
   const [data, setData] = useState({
     background: 0,
     body: 0,

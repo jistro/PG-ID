@@ -2,7 +2,10 @@
 import { PGAvatar } from '@/components/register/PGAvatar';
 import { UserData } from '@/components/register/UserData';
 import { useReadUserData } from '@/hooks/useReadUserData';
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useAccount } from 'wagmi';
 
 function Page() {
   const [step, setStep] = useState(0);
@@ -10,6 +13,7 @@ function Page() {
   useEffect(() => {
     if (data.username) setStep(1);
   }, [data]);
+
   if (isLoading)
     return (
       <div className='min-h-screen w-full flex justify-center items-center'>

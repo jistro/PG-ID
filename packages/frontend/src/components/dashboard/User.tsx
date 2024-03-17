@@ -34,18 +34,18 @@ function User({ data }: { data: any }) {
         </div>
         <p>
           <span className='text-[#594440]'>
-            {((data.username as string) ?? 'Luuk.id').split('.')[0]}
+            {((data?.username as string) ?? 'Luuk.id').split('.')[0]}
           </span>
           <span className='text-[#C0ABA7]'>.pg.id</span>
         </p>
         <div className='bg-[#C0ABA7] text-white my-2 w-[83px] h-[52px] items-center flex justify-center'>
           <p>
-            <span>Level:</span> {Number(data.level)}
+            <span>Level:</span> {Number(data?.level)}
           </p>
         </div>
         <p className='text-[#C0ABA7]'>
           PG Points:{' '}
-          <span className='text-[#594440]'>{Number(data.points)}</span>
+          <span className='text-[#594440]'>{Number(data?.points)}</span>
         </p>
         <p className='text-[#C0ABA7]'>
           Points till next level: <span className='text-[#594440]'>40</span>

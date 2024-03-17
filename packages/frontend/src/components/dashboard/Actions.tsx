@@ -5,13 +5,13 @@ import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { useRouter } from 'next/navigation';
 import { Perk } from './Perk';
 
-function Actions({ level }: { level: number }) {
-  const { push } = useRouter();
-  const { disconnect } = useDisconnect();
-  const handleDisconnect = () => {
-    disconnect();
-    push('/');
-  };
+function Actions({
+  setIsOpenModal,
+  level,
+}: {
+  setIsOpenModal?: (arg: boolean) => void;
+  level: number;
+}) {
   return (
     <div className='h-full max-h-[400px] actions w-full text-xl flex flex-col'>
       <div className='flex flex-row justify-between'>
@@ -28,7 +28,7 @@ function Actions({ level }: { level: number }) {
         </div>
         <div className='flex items-center justify-center'>
           <button
-            onClick={handleDisconnect}
+            onClick={() => setIsOpenModal?.(true)}
             className='border-t-[3.4px] flex items-center justify-center w-[110px] h-[72px] border-[#C0ABA7] border-x-[2.5px] text-[#594440]'
           >
             <img src='/power.svg' alt='Power Button' />
