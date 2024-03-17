@@ -9,7 +9,7 @@ function useCreatePGID () {
   const { address } = useAccount()
 
   const createPGID = async (username: string) => {
-    if (!walletClient || !address) return
+    if (!walletClient) return
     const { publicClient, smartAccountClient } =
       await getGaslessTransactionClient(walletClient)
     const registryContract = getContract({

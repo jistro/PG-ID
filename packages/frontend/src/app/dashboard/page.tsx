@@ -29,13 +29,7 @@ function Page() {
   });
   useEffect(() => {
     if (localStorage.getItem('avatar')) {
-      if (
-        JSON.parse(localStorage.getItem('avatar') as string).address === address
-      ) {
-        setAvatar(JSON.parse(localStorage.getItem('avatar') as string));
-      } else {
-        push('/create-id');
-      }
+      setAvatar(JSON.parse(localStorage.getItem('avatar') as string));
     }
   }, []);
 
@@ -64,7 +58,9 @@ function Page() {
         onClose={() => setIsModalVisible(false)}
         title='Log out'
       >
-        <p className=' text-[#594440] py-8'>Are you sure you want to log out?</p>
+        <p className=' text-[#594440] py-8'>
+          Are you sure you want to log out?
+        </p>
         <div className='flex flex-row gap-3  text-[#594440]'>
           <button
             className='flex items-center justify-center border-2 border-[#594440] py-8 w-full h-[20px]'
@@ -72,8 +68,10 @@ function Page() {
           >
             No
           </button>
-          <button className='flex items-center bg-[#594440] text-nouns-pastel justify-center border-2 border-[#594440] py-8 w-full h-[20px]'
- onClick={handleDisconnect}>
+          <button
+            className='flex items-center bg-[#594440] text-nouns-pastel justify-center border-2 border-[#594440] py-8 w-full h-[20px]'
+            onClick={handleDisconnect}
+          >
             Yes
           </button>
         </div>

@@ -3,9 +3,12 @@ import { Select } from '@/components/register/Select';
 import { useCreatePGID } from '@/hooks/useCreatePGID';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useAccount } from 'wagmi';
 
 function UserData({ setStep }: { setStep: (step: number) => void }) {
   const [activeButton, setActiveButton] = useState<null | string>(null);
+  const { address } = useAccount();
+
   const [selections, setSelections] = useState({
     1: null,
     2: null,
@@ -32,6 +35,7 @@ function UserData({ setStep }: { setStep: (step: number) => void }) {
   };
 
   const handleContinue = async () => {
+    if (!userName || !address) return;
     await createPGID(userName);
     setStep(1);
   };
