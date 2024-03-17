@@ -25,10 +25,7 @@ function Stats() {
     }
     getData();
   }, [address]);
-  const handleDisconnect = () => {
-    disconnect();
-    push('/');
-  };
+
   const handleUpdateImpact = async () => {
     await makeAttest('Retro PGF', stats.RPGF);
     await makeAttest('Donations', stats.Donations);
@@ -38,7 +35,7 @@ function Stats() {
       <div className=' flex h-full  text-[#94716B] flex-col p-4 border-[#C0ABA7] border-[3.5px]'>
         <div className='flex flex-row items-center justify-between '>
           <span>RPGF rewards</span>
-          <img className='w-8' src='/rgp.svg'/>
+          <img className='w-8' src='/rgp.svg' />
         </div>
         <p className='text-[#594440] pb-5'>{stats.RPGF} PG Points</p>
         <span className=' text-[#94716B]'>Donation rewards</span>
@@ -50,7 +47,6 @@ function Stats() {
       >
         Update impact
       </button>
-    
     </div>
   );
 }

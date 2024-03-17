@@ -35,13 +35,6 @@ function Page() {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  useEffect(() => {
-    if (userDataIsLoading) return;
-    if (!data.username) {
-      push('/create-id');
-    }
-  }, [data, avatar]);
-
   const handleDisconnect = async () => {
     disconnect();
     await handleLogOut();
