@@ -9,7 +9,7 @@ function StepFive() {
   const router = useRouter();
 
   const handleNextStep = () => {
-    router.push("/welcome");
+    router.push("/");
   };
   return (
     <main

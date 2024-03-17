@@ -16,6 +16,12 @@ function Actions() {
           <h3>Top Up</h3>
         </button>
       </div>
+	<div >
+		<button >
+			<img src="/power.svg">
+			</img>
+		</button>
+	</div>
       <div className="h-full w-full border-[#C0ABA7] border-[3.5px] p-4 flex flex-row ">
 		<Pay />
 		
