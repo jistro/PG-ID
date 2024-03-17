@@ -20,7 +20,7 @@ contract DeployHook is Script {
     function run() public {
         vm.broadcast(0xF11f8301C76F46733d855ac767BE741FFA9243Bd);
         uint160 flags = uint160(Hooks.BEFORE_SWAP_FLAG);
-        poolManager = IPoolManager(0xd962b16F4ec712D705106674E944B04614F077be);
+        poolManager = IPoolManager(0xE5dF461803a59292c6c03978c17857479c40bc46);
         (address hookAddress, bytes32 salt) =
         HookMiner.find(CREATE2_DEPLOYER, flags, type(DinamicFeeByLevelHook).creationCode, abi.encode(address(poolManager)));
         DinamicFeeByLevelHook hook = new DinamicFeeByLevelHook{salt: salt}(IPoolManager(address(poolManager)));

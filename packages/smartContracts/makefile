@@ -27,9 +27,9 @@ anvil :
 
 NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
 
-TESTNET_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE) --broadcast --verify --etherscan-api-key $(API_KEY) -vvvv
-ALBITRUM_TESTNET_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE) --broadcast -vvvv
-ARB_ARGS := --rpc-url $(RPC_URL_ARB) --private-key $(PRIVATE) --broadcast --verify --etherscan-api-key $(API_KEY_ARB) -vvvv
+TESTNET_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE) --broadcast --verify --etherscan-api-key $(API_KEY) -vvvvvvv
+ALBITRUM_TESTNET_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE) --broadcast -vvvvvvv
+ARB_ARGS := --rpc-url $(RPC_URL_ARB) --private-key $(PRIVATE) --broadcast --verify --etherscan-api-key $(API_KEY_ARB) -vvvvvvv
 
 compile:
 	forge compile
@@ -56,3 +56,11 @@ deployCoins:
 deployHook:
 	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
 	@forge script script/DeployHook.s.sol:DeployHook $(ARB_ARGS)
+
+createPool:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/CreatePool.s.sol:CreatePool $(ARB_ARGS)
+
+deloyHookAndPool:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/DeployHookAndPool.s.sol:DeployHookAndPool $(ARB_ARGS)

@@ -17,6 +17,8 @@ import {FixedPointMathLib} from "solmate/utils/FixedPointMathLib.sol";
 import {SwapFeeLibrary} from "@uniswap/v4-core/src/libraries/SwapFeeLibrary.sol";
 import {RegisterSystem} from "../src/RegisterSystem.sol";
 import {IERC20} from "forge-std/interfaces/IERC20.sol";
+import {IQuoter} from "@uniswap/v4-periphery/contracts/interfaces/IQuoter.sol";
+import {Quoter} from "@uniswap/v4-periphery/contracts/lens/Quoter.sol";
 
 contract DynamicFeeHookTest is Test, Deployers {
     using PoolIdLibrary for PoolKey;
@@ -32,10 +34,14 @@ contract DynamicFeeHookTest is Test, Deployers {
 
     DinamicFeeByLevelHook hook;
 
+    Quoter quoter;
+
     function setUp() public {
         // creates the pool manager, utility routers, and test tokens
         Deployers.deployFreshManagerAndRouters();
         Deployers.deployMintAndApprove2Currencies();
+
+        
 
         // Deploy the hook to an address with the correct flags
         uint160 flags = uint160(Hooks.BEFORE_SWAP_FLAG);
@@ -102,6 +108,9 @@ contract DynamicFeeHookTest is Test, Deployers {
         console.log("userA level: ", registerSystem.getLevelOfUser(userA));
         console.log("userB level: ", registerSystem.getLevelOfUser(userB));
 
+        // Set up the quoter
+        quoter = new Quoter(address(manager));
+
     }
 
     function test_dynamic_fee_even_block_number() public {
@@ -120,6 +129,27 @@ contract DynamicFeeHookTest is Test, Deployers {
         // ------------------- //
 
         uint256 token1Output = currency1.balanceOfSelf() - balance1Before;
+
+        uint160 MAX_SLIPPAGE = zeroForOne ? MIN_PRICE_LIMIT : MAX_PRICE_LIMIT;
+        (int128[] memory deltaAmounts, uint160 sqrtPriceX96After,) = quoter.quoteExactInputSingle(
+            IQuoter.QuoteExactSingleParams(key, zeroForOne, address(this), 1e18, MAX_SLIPPAGE, data)
+        );
+
+        console.log("deltaAmounts: ", uint256(int256(deltaAmounts[0])));
+        console.log("deltaAmounts: ", uint256(int256(deltaAmounts[1])));
+
+        console.log("sqrtPriceX96After: ", sqrtPriceX96After);
+
+        (int128[] memory deltaAmountsOut, uint160 sqrtPriceX96AfterOut,) = quoter.quoteExactOutputSingle(
+            IQuoter.QuoteExactSingleParams(key, zeroForOne, address(this), 1e18, MAX_SLIPPAGE, data)
+        );
+
+        console.log("deltaAmountsOut: ", uint256(int256(deltaAmountsOut[0])));
+
+        console.log("deltaAmountsOut: ", uint256(int256(deltaAmountsOut[1])));
+
+        console.log("sqrtPriceX96AfterOut: ", sqrtPriceX96AfterOut);
+
 
         //assertEq(int256(swapDelta.amount0()), amountSpecified);
         //assertEq(int256(swapDelta.amount1()), -int256(token1Output));

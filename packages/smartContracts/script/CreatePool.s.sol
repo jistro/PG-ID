@@ -17,22 +17,23 @@ import {IERC20} from "forge-std/interfaces/IERC20.sol";
 
 import {Script, console} from "forge-std/Script.sol";
 
-contract CreatePoolScript is Script {
+contract CreatePool is Script {
     using CurrencyLibrary for Currency;
 
     //addresses with contracts deployed
-    address constant GOERLI_POOLMANAGER = address(0x3A9D48AB9751398BbFa63ad67599Bb04e4BdF98b); //pool manager deployed to GOERLI
-    address constant MUNI_ADDRESS = address(0xbD97BF168FA913607b996fab823F88610DCF7737); //mUNI deployed to GOERLI -- insert your own contract address here
-    address constant MUSDC_ADDRESS = address(0xa468864e673a807572598AB6208E49323484c6bF); //mUSDC deployed to GOERLI -- insert your own contract address here
-    address constant HOOK_ADDRESS = address(0x3CA2cD9f71104a6e1b67822454c725FcaeE35fF6); //address of the hook contract deployed to goerli -- you can use this hook address or deploy your own!
+    address constant BASE_SEPOLIA_POOLMANAGER = address(0xE5dF461803a59292c6c03978c17857479c40bc46); //pool manager deployed to GOERLI
+    address constant USDT_MOCK_ADDRESS = address(0xEce6af52f8eDF69dd2C216b9C3f184e5b31750e9); //mUNI deployed to GOERLI -- insert your own contract address here
+    address constant USDC_MOCK_ADDRESS = address(0x63ba29cAF4c40DaDA8a61D10AB5D2728c806b61f); //mUSDC deployed to GOERLI -- insert your own contract address here
+    address constant HOOK_ADDRESS = address(0x0207c6D26577788dD3044652e62F1DE665403483); //address of the hook contract deployed to goerli -- you can use this hook address or deploy your own!
 
-    IPoolManager manager = IPoolManager(GOERLI_POOLMANAGER);
+    IPoolManager manager = IPoolManager(BASE_SEPOLIA_POOLMANAGER);
 
     function run() external {
+        vm.broadcast(0xF11f8301C76F46733d855ac767BE741FFA9243Bd);
         // sort the tokens!
-        address token0 = uint160(MUSDC_ADDRESS) < uint160(MUNI_ADDRESS) ? MUSDC_ADDRESS : MUNI_ADDRESS;
-        address token1 = uint160(MUSDC_ADDRESS) < uint160(MUNI_ADDRESS) ? MUNI_ADDRESS : MUSDC_ADDRESS;
-        uint24 swapFee = 4000;
+        address token0 = uint160(USDT_MOCK_ADDRESS) < uint160(USDC_MOCK_ADDRESS) ? USDT_MOCK_ADDRESS : USDC_MOCK_ADDRESS;
+        address token1 = uint160(USDT_MOCK_ADDRESS) < uint160(USDC_MOCK_ADDRESS) ? USDC_MOCK_ADDRESS : USDT_MOCK_ADDRESS;
+        uint24 swapFee = 1000;
         int24 tickSpacing = 10;
 
         // floor(sqrt(1) * 2^96)
@@ -55,7 +56,7 @@ contract CreatePoolScript is Script {
         console.log("Pool ID Below");
         console.logBytes32(bytes32(idBytes));
 
-        vm.broadcast();
+        
         manager.initialize(pool, startingPrice, hookData);
     }
 }
