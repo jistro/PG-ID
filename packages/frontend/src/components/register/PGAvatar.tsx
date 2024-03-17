@@ -13,7 +13,7 @@ const glasses: string[] = [
 ];
 const lvl: string[] = ['lvl1.svg', 'lvl2.svg', 'lvl3.svg', 'lvl4.svg'];
 
-function PGAvatar() {
+function PGAvatar({ username }: { username: string }) {
   const [selectedBackground, setBackground] = useState<string>(background[0]);
   const [selectedBody, setBody] = useState<string>(body[0]);
   const [selectedGlasses, setGlasses] = useState<string>(glasses[0]);
@@ -103,11 +103,12 @@ function PGAvatar() {
   return (
     <>
       <div className='flex flex-col items-center  h-screen  rounded-lg  bg-transparent'>
-        <div className='flex flex-col gap-4 p-6 h-full  bg-nouns-pastel'>
-          <div className='flex flex-col w-full'>
-            <h2 className='font-sans text-start text-4xl text-[#594440] pb-4 border-4 border-dashed font-bold border-transparent border-b-[#C0ABA7]'>
+        <div className='flex flex-col gap-3 p-4 h-full   bg-nouns-pastel'>
+          <div className='flex flex-col gap-1 w-full border-transparent border-b-[#C0ABA7]  pb-4 border-4 border-dashed'>
+            <h2 className='font-sans text-start text-4xl text-[#594440] font-bold '>
               Create your PG ID Avatar
             </h2>
+            <p className='text-xl text-[#C0ABA7]'>{username}</p>
           </div>
           <div className='grid gap-4 w-full sm:grid-rows-2 '>
             <div

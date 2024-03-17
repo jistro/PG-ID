@@ -8,9 +8,7 @@ import { Address } from 'viem';
 
 function User() {
   const { address } = useAccount();
-  const { data } = useReadUserData(
-    '0x1726cf86DA996BC4B2F393E713f6F8ef83f2e4f6'
-  );
+  const { data } = useReadUserData();
 
   return (
     <div className='max-h-full overflow-hidden text-xl text-[#594440] user flex flex-row gap-4 w-full'>
