@@ -1,3 +1,4 @@
+'use client'
 import { Stats, User } from '@/components';
 import { Actions } from '@/components/dashboard/Actions';
 import React from 'react';
