@@ -102,4 +102,11 @@ body {
   .sombra {
 	box-shadow: -15px 15px 0px #00000076;
 }
+.center{
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
 }
