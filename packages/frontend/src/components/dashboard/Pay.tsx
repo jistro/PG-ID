@@ -22,7 +22,7 @@ function Pay({ level }: { level: number }) {
   return (
     <>
       <div className='grid flex-col-2 gap-2  w-full'>
-        <div className='border-2 p-8 border-[#C0ABA7] border-[3.5px] h-[130px] flex flex-row items-center justify-between'>
+        <div className='  p-8 border-[#C0ABA7] border-[3.5px] h-[130px] flex flex-row items-center justify-between'>
           <div>
             <h2 className='text-[#C0ABA7] py-4 text-2xl'>You pay</h2>
             <input
@@ -50,7 +50,7 @@ function Pay({ level }: { level: number }) {
             src='/swap.svg'
           ></img>
         </button>
-        <div className='border-2 p-8 border-[#C0ABA7] h-[130px] border-[3.5px] flex flex-row items-center justify-between'>
+        <div className=' p-8 border-[#C0ABA7] h-[130px] border-[3.5px] flex flex-row items-center justify-between'>
           <div>
             <h2 className='text-[#C0ABA7] py-4 text-2xl'>You receive</h2>
             <input

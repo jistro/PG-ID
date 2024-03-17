@@ -57,22 +57,23 @@ function Page() {
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className=' h-screen flex justify-center items-center'
+      className=' h-screen flex z-40 justify-center items-center'
     >
       <Modal
         isVisible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         title='Log out'
       >
-        <p>Are you sure you want to log out?</p>
-        <div>
+        <p className=' text-[#594440] py-8'>Are you sure you want to log out?</p>
+        <div className='flex flex-row gap-3  text-[#594440]'>
           <button
-            className='p-6 w-full h-full'
+            className='flex items-center justify-center border-2 border-[#594440] py-8 w-full h-[20px]'
             onClick={() => setIsModalVisible(false)}
           >
             No
           </button>
-          <button className='p-6 w-full h-full' onClick={handleDisconnect}>
+          <button className='flex items-center bg-[#594440] text-nouns-pastel justify-center border-2 border-[#594440] py-8 w-full h-[20px]'
+ onClick={handleDisconnect}>
             Yes
           </button>
         </div>
