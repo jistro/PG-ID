@@ -1,0 +1,29 @@
+[
+  {
+    "type": "function",
+    "name": "MAX_PRICE_LIMIT",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint160", "internalType": "uint160" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "MIN_PRICE_LIMIT",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint160", "internalType": "uint160" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "swapInPool",
+    "inputs": [
+      {
+        "name": "_amountSpecified",
+        "type": "int256",
+        "internalType": "int256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]

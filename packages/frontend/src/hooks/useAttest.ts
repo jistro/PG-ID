@@ -26,7 +26,6 @@ function useAttest () {
       value as number,
       address as Address
     ])
-    alert('done')
     console.debug(tx)
   }
   return { makeAttest }

@@ -1,11 +1,24 @@
 'use client';
-import React, { useState } from 'react';
+import { useSwap } from '@/hooks/useSwap';
+import React, { useMemo, useState } from 'react';
 
-function Pay() {
+function Pay({ level }: { level: number }) {
   const [value, setValue] = useState(0);
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) return setValue(0);
     setValue(parseFloat(e.target.value));
+  };
+  const { swap } = useSwap();
+
+  const operator = useMemo(() => {
+    if (!level) return 0.9;
+    if (level === 1) return 0.9;
+    if (level === 2) return 0.95;
+    if (level === 3) return 0.98;
+    if (level > 3) return 1;
+  }, [level]);
+  const handleSwap = async () => {
+    await swap(value.toString());
   };
   return (
     <>
@@ -50,7 +63,7 @@ function Pay() {
               spellCheck='false'
               type='text'
               disabled
-              value={value * 0.99}
+              value={value * (operator as number)}
             />
           </div>
           <div className=''>
@@ -61,7 +74,9 @@ function Pay() {
             <p className='text-[#C0ABA7]'>Balance: </p>
           </div>
         </div>
-        <button className='bg-[#C0ABA7] h-[72px]'>Swap</button>
+        <button onClick={handleSwap} className='bg-[#C0ABA7] h-[72px]'>
+          Swap
+        </button>
       </div>
     </>
   );

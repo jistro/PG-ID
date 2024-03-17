@@ -4,10 +4,7 @@ import React, { useEffect } from 'react';
 import Nouns from '@/assets/images/Nouns.svg';
 import { useReadUserData } from '@/hooks/useReadUserData';
 
-function User() {
-  const { data } = useReadUserData();
-  console.debug(data);
-
+function User({ data }: { data: any }) {
   return (
     <div className='max-h-full overflow-hidden text-xl text-[#594440] user flex flex-row gap-4 w-full'>
       <Image className='h-full w-fit' src={Nouns} alt='nouns' />

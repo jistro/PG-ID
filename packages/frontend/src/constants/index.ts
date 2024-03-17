@@ -9,3 +9,6 @@ export const schemaUID = process.env.NEXT_PUBLIC_SCHEMA_ID
 export const network = process.env.NEXT_PUBLIC_NETWORK
 export const attesterAddress = process.env
   .NEXT_PUBLIC_ATTESTER_ADDRESS as Address
+export const swapAddress = process.env.NEXT_PUBLIC_SWAP_ADDRESS as Address
+export const USDTAddress = process.env.NEXT_PUBLIC_USDT_ADDRESS as Address
+
