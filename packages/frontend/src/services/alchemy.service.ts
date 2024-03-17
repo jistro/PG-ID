@@ -42,7 +42,7 @@ function calculateAccumulatedPoints (
 export async function getUserData (user: Address) {
   const RPGF = await alchemy.core.getAssetTransfers({
     fromBlock: '0x0',
-    fromAddress: '0x68C2A24e564Df4D908EA9fb7A2ec4F38846eD8FA',
+    fromAddress: '0x1726cf86DA996BC4B2F393E713f6F8ef83f2e4f6',
     toAddress: user,
     excludeZeroValue: true,
     category: [AssetTransfersCategory.ERC20]
@@ -50,7 +50,7 @@ export async function getUserData (user: Address) {
   const Donations = await alchemy.core.getAssetTransfers({
     fromBlock: '0x0',
     fromAddress: user,
-    toAddress: '0x68C2A24e564Df4D908EA9fb7A2ec4F38846eD8FA',
+    toAddress: '0x1726cf86DA996BC4B2F393E713f6F8ef83f2e4f6',
     excludeZeroValue: true,
     category: [AssetTransfersCategory.ERC20]
   })
