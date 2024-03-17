@@ -1,15 +1,16 @@
 'use client';
 import { PGAvatar } from '@/components/register/PGAvatar';
 import { UserData } from '@/components/register/UserData';
+import { useGetAvatar } from '@/hooks/useGetAvatar';
 import { useReadUserData } from '@/hooks/useReadUserData';
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
 
 function Page() {
+  const { push } = useRouter();
   const [step, setStep] = useState(0);
   const { isLoading, data } = useReadUserData();
+  const { data: avatar } = useGetAvatar();
   useEffect(() => {
     if (data.username) setStep(1);
   }, [data]);

@@ -8,6 +8,7 @@ function useSwap () {
   const { data: walletClient } = useWalletClient()
 
   const swap = async (value: string) => {
+    console.debug('swap', value)
     if (!walletClient) return
     const { publicClient, smartAccountClient } =
       await getGaslessTransactionClient(walletClient)

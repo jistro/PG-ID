@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     handleLogOut();
   }, []);
-  if (isAuthenticated) push('/create-id');
+  if (isAuthenticated) push('/dashboard');
   return (
     <main className='h-screen'>
       <div className='flex flex-col items-center  mx-auto rounded-lg h-full sm:px-16  bg-transparent'>

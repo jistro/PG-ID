@@ -6,10 +6,12 @@ import { Noun } from '../Nouns';
 import { useMakePGAvatar } from '@/hooks/useMakePGAvatar';
 import { useGetAvatar } from '@/hooks/useGetAvatar';
 import { useRouter } from 'next/navigation';
+import { useAccount } from 'wagmi';
 
 function PGAvatar({ username }: { username: string }) {
   const { createPGAvatar } = useMakePGAvatar();
   const { push } = useRouter();
+  const { address } = useAccount();
   const { data: avatar } = useGetAvatar();
   if (avatar.head) push('/dashboard');
   const [data, setData] = useState({
@@ -17,10 +19,15 @@ function PGAvatar({ username }: { username: string }) {
     body: 0,
     glasses: 0,
     head: 50,
+    address,
   });
 
   const handleCreate = async () => {
-    await createPGAvatar(data);
+    // This is the function that is called when the user clicks the "Create" button but we have an issue with the smart contract, so we are commenting it out for now
+    // At the real implementation the user needs to sign 4 transactions to create the avatar, thats a problem for the user experience, at the roadmap we have a solution for that.
+    // await createPGAvatar(data);
+    localStorage.setItem('avatar', JSON.stringify(data));
+    push('/dashboard');
   };
 
   return (

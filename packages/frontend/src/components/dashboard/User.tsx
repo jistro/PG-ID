@@ -1,13 +1,24 @@
 'use client';
 import Image from 'next/image';
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Nouns from '@/assets/images/Nouns.svg';
 import { useReadUserData } from '@/hooks/useReadUserData';
 import { useGetAvatar } from '@/hooks/useGetAvatar';
 import { Noun } from '../Nouns';
 
 function User({ data }: { data: any }) {
-  const { data: avatar } = useGetAvatar();
+  // const { data: avatar } = useGetAvatar();
+  const [avatar, setAvatar] = useState({
+    body: 0,
+    glasses: 0,
+    background: 0,
+    head: 50,
+  });
+  useEffect(() => {
+    if (localStorage.getItem('avatar')) {
+      setAvatar(JSON.parse(localStorage.getItem('avatar') as string));
+    }
+  }, []);
   const head = useMemo(() => {
     if (!data) return 50;
     if (Number(data.level) === 0) return 50;
