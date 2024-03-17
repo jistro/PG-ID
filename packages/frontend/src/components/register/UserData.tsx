@@ -1,5 +1,6 @@
 'use client';
 import { Select } from '@/components/register/Select';
+import { useCreatePGID } from '@/hooks/useCreatePGID';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -10,8 +11,10 @@ function UserData({ setStep }: { setStep: (step: number) => void }) {
     2: null,
     3: null,
   });
+  const [userName, setUserName] = useState('');
 
   const { push } = useRouter();
+  const { createPGID } = useCreatePGID();
 
   const handleSelectionChange = (key: number, value: string) => {
     setSelections((prevSelections) => ({
@@ -26,6 +29,11 @@ function UserData({ setStep }: { setStep: (step: number) => void }) {
     } else {
       setActiveButton(buttonId);
     }
+  };
+
+  const handleContinue = async () => {
+    await createPGID(userName);
+    setStep(1);
   };
 
   return (
@@ -46,6 +54,7 @@ function UserData({ setStep }: { setStep: (step: number) => void }) {
                 autoCorrect='off'
                 spellCheck='false'
                 type='text'
+                onChange={(e) => setUserName(e.target.value)}
               />
             </label>
             <h3 className='text-[#594440] text-3xl'>Select your interests</h3>
@@ -78,7 +87,7 @@ function UserData({ setStep }: { setStep: (step: number) => void }) {
                 </h3>
               </button>
               <button
-                onClick={() => setStep(1)}
+                onClick={handleContinue}
                 className='border-4 border-[#C0ABA7] bg-[#C0ABA7] flex flex-row items-center  p-4'
               >
                 <h3 className=' w-full  font-thin text-3xl flex flex-grow text-white'>
