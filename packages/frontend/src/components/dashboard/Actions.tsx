@@ -16,8 +16,9 @@ function Actions() {
           <h3>Top Up</h3>
         </button>
       </div>
-      <div className="h-full w-full gap-4 border-[#C0ABA7] border-[3.5px] p-4 flex flex-row ">
+      <div className="h-full w-full border-[#C0ABA7] border-[3.5px] p-4 flex flex-row ">
 		<Pay />
+		
 		<Perk />
 	  </div>
     </div>
