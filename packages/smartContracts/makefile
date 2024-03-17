@@ -64,3 +64,7 @@ createPool:
 deloyHookAndPool:
 	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
 	@forge script script/DeployHookAndPool.s.sol:DeployHookAndPool $(ARB_ARGS)
+
+deploySwap:
+	@echo "--==Deploying test contracts in Ethereum sepolia testnet==--"
+	@forge script script/DeploySwap.s.sol:DeploySwap $(ARB_ARGS)
